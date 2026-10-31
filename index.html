@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Память+ — приложение, которое учит запоминать</title>
+  <meta name="description" content="Приёмы запоминания, ежедневная зарядка и стихи наизусть с проверкой вслух. Для Android и iPhone, бесплатно, без регистрации и рекламы.">
+  <meta name="theme-color" content="#f7f9fd">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preload" href="fonts/bad-script-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/golos-text-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sheet">
+  <header class="top">
+    <a class="brand" href="#top"><img src="img/icon-192.png" alt="" width="36" height="36">Память+</a>
+    <a class="top-link" href="#install">Установить</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="what">Приложение, которое учит запоминать</p>
+        <h1>Запомни шесть вещей. В&nbsp;конце страницы спрошу.</h1>
+        <p class="how">Это дворец памяти, один из приёмов Памяти+. Пройди по квартире от двери и представь каждую вещь на её месте. Чем нелепее картинка, тем лучше. Хватит минуты.</p>
+        <ol class="route">
+          <li data-room="1"><span>Прихожая:</span> на коврике пыхтит <b>самовар</b></li>
+          <li data-room="2"><span>Ванная:</span> в воде лежит <b>якорь</b></li>
+          <li data-room="3"><span>Кухня:</span> на плите кипит <b>арбуз</b></li>
+          <li data-room="4"><span>Комната:</span> вместо телевизора <b>барабан</b></li>
+          <li data-room="5"><span>Балкон:</span> на перилах <b>кактус</b> в ушанке</li>
+          <li data-room="6"><span>Спальня:</span> над кроватью раскрыт <b>зонт</b></li>
+        </ol>
+        <a class="skip" href="#install">Не хочу запоминать, покажи установку</a>
+      </div>
+
+      <figure class="plan" id="plan">
+        <svg viewBox="0 0 672 532" role="img" aria-label="План квартиры с маршрутом от входной двери через шесть комнат">
+          <defs>
+            <filter id="ink" x="-2%" y="-2%" width="104%" height="104%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/>
+            </filter>
+          </defs>
+          <g class="rooms">
+            <rect data-room="1" x="252" y="252" width="168" height="224"/>
+            <rect data-room="2" x="28" y="280" width="224" height="196"/>
+            <rect data-room="3" x="28" y="28" width="224" height="252"/>
+            <rect data-room="4" x="252" y="28" width="252" height="224"/>
+            <rect data-room="5" x="504" y="28" width="140" height="224"/>
+            <rect data-room="6" x="420" y="252" width="224" height="224"/>
+          </g>
+          <g class="walls" filter="url(#ink)">
+            <path pathLength="1" d="M308 476H28V28H504"/>
+            <path pathLength="1" d="M364 476H644V252H616"/>
+            <path pathLength="1" d="M560 252H252"/>
+            <path pathLength="1" d="M252 28V84"/>
+            <path pathLength="1" d="M252 140V336"/>
+            <path pathLength="1" d="M252 392V476"/>
+            <path pathLength="1" d="M28 280H112"/>
+            <path pathLength="1" d="M168 280H252"/>
+            <path pathLength="1" d="M420 252V476"/>
+            <path pathLength="1" d="M504 28V84"/>
+            <path pathLength="1" d="M504 140V252"/>
+          </g>
+          <path class="glass" filter="url(#ink)" d="M504 28H644V252"/>
+          <path class="door" filter="url(#ink)" d="M308 476V420A56 56 0 0 1 364 476"/>
+          <path class="way" d="M336 526C336 480 338 440 330 404C322 372 290 364 252 364C200 364 150 372 142 330C136 300 140 262 140 226C140 152 190 112 252 112C320 112 430 122 504 112C540 108 590 120 590 170C590 210 588 240 588 252C588 300 560 340 522 372"/>
+          <g class="rooms-text">
+            <g class="stop" data-room="1"><text class="name" x="266" y="282">Прихожая</text><text class="word" x="264" y="326">самовар</text><circle cx="332" cy="404" r="14"/><text class="num" x="332" y="409">1</text></g>
+            <g class="stop" data-room="2"><text class="name" x="44" y="420">Ванная</text><text class="word" x="42" y="462">якорь</text><circle cx="150" cy="360" r="14"/><text class="num" x="150" y="365">2</text></g>
+            <g class="stop" data-room="3"><text class="name" x="44" y="62">Кухня</text><text class="word" x="42" y="106">арбуз</text><circle cx="140" cy="226" r="14"/><text class="num" x="140" y="231">3</text></g>
+            <g class="stop" data-room="4"><text class="name" x="268" y="178">Комната</text><text class="word" x="266" y="222">барабан</text><circle cx="384" cy="118" r="14"/><text class="num" x="384" y="123">4</text></g>
+            <g class="stop" data-room="5"><text class="name" x="518" y="58">Балкон</text><text class="word" x="516" y="98">кактус</text><circle cx="590" cy="170" r="14"/><text class="num" x="590" y="175">5</text></g>
+            <g class="stop" data-room="6"><text class="name" x="438" y="420">Спальня</text><text class="word" x="436" y="462">зонт</text><circle cx="522" cy="372" r="14"/><text class="num" x="522" y="377">6</text></g>
+          </g>
+        </svg>
+        <figcaption>Вход здесь</figcaption>
+      </figure>
+    </section>
+
+    <section class="block" id="inside">
+      <h2>Открываешь и занимаешься, остальное приложение считает само</h2>
+      <p class="lead">Зарядка занимает 10–15 минут в день. Приложение показывает то, что ты вот-вот забудешь, и ответ надо вспомнить самому. Кнопки «я помню» здесь нет, обмануть себя не получится.</p>
+      <div class="pasted">
+        <figure>
+          <img src="img/question.webp" alt="Экран зарядки: вопрос «Чей это флаг?» с четырьмя вариантами ответа" width="252" height="532" loading="lazy">
+          <figcaption><b>Зарядка.</b> 193 столицы, 193 флага, 100 дат истории России и мира. Сначала выбираешь из вариантов, потом вписываешь сам.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/skills.webp" alt="Экран навыков: списки, цифры, имена и лица, не забыть" width="252" height="532" loading="lazy">
+          <figcaption><b>Навыки.</b> Списки, цифры, имена и дела на завтра. Короткие уроки с упражнениями, в начале и в конце тест: видно, что изменилось.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/poem-run.webp" alt="Экран стихов: выученные слова видны, остальные спрятаны, внизу клавиатура" width="252" height="532" loading="lazy">
+          <figcaption><b>Стихи.</b> 15 стихов, от четырёх строк Тютчева до «Бородина». Слова прячутся, ты печатаешь первые буквы.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block aloud" id="aloud">
+      <div class="aloud-text">
+        <h2>Стих выучен? Расскажи его вслух</h2>
+        <p>Приложение послушает и покажет, где ошибка, пропуск, запинка или долгая пауза. Любое отмеченное место можно переслушать своим голосом.</p>
+        <div class="verse" aria-label="Пример проверки: красным отмечены неточности">
+          <p>Белеет парус одинокой</p>
+          <p>В тумане моря <mark>голубом</mark>!..<span class="red">прозвучало «голубого»</span></p>
+          <p>Что ищет он в стране далёкой?</p>
+          <p>Что <mark>кинул</mark> он в краю родном?..<span class="red">прозвучало «бросил»</span></p>
+        </div>
+        <p>Всё распознаётся на самом телефоне: запись никуда не уходит и стирается, когда закрываешь экран. Модуль речи весит 46&nbsp;МБ и скачивается, только если захочешь.</p>
+        <p class="small">Распознавание бывает неточным. Спорные слова приложение помечает как неразборчивые и в счёт не берёт.</p>
+      </div>
+      <figure class="aloud-shot">
+        <img src="img/voice-bubble.webp" alt="Отчёт проверки вслух: 85% слов, отмеченные ошибки и кнопка «Послушать этот момент»" width="252" height="532" loading="lazy">
+      </figure>
+    </section>
+
+    <section class="block" id="method">
+      <h2>Память целиком не накачаешь. Приёмы работают</h2>
+      <p class="lead">Упражнения улучшают в основном то, что ты тренируешь. Поэтому Память+ учит конкретным приёмам. Вот на чём они держатся.</p>
+      <dl class="method">
+        <div><dt>Интервальные повторения</dt><dd>Повторяешь как раз перед тем, как начнёшь забывать.</dd><dd class="src">Dunlosky и др., 2013: высокая польза</dd></div>
+        <div><dt>Вспоминание вместо перечитывания</dt><dd>Вытащить ответ из головы полезнее, чем посмотреть на него ещё раз.</dd><dd class="src">Там же: высокая польза</dd></div>
+        <div><dt>Дворец памяти</dt><dd>За 6 недель тренировки люди стали запоминать примерно вдвое больше слов, эффект держался 4 месяца.</dd><dd class="src">Dresler и др., 2017</dd></div>
+        <div><dt>«Когда — то» для дел</dt><dd>План «когда увижу дверь, возьму ключи» срабатывает чаще, чем просто «не забыть».</dd><dd class="src">Gollwitzer, Sheeran, 2006</dd></div>
+        <div><dt>Чего здесь нет</dt><dd>Мозговых игр: они улучшают в основном результат в самой игре.</dd><dd class="src">Soveri и др., 2017</dd></div>
+      </dl>
+      <p class="small">Порядок упражнений и оценка по времени ответа — наши правила, а не доказанный метод. Проверяй себя на экране «Прогресс».</p>
+    </section>
+
+    <section class="block test" id="test" hidden>
+      <p class="date" id="test-date">Контрольная</p>
+      <h2 class="hand">Контрольная</h2>
+      <p class="lead" id="test-lead">Как и договаривались. Заходи в квартиру и вспоминай по порядку. Наверх подглядывать нельзя.</p>
+      <div class="test-grid">
+        <div class="test-plan" id="test-plan"></div>
+        <div class="test-side">
+          <form id="test-form" autocomplete="off">
+            <label for="test-input" id="test-question"></label>
+            <input id="test-input" type="text" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="next" maxlength="24">
+            <div class="test-buttons">
+              <button type="submit" class="btn">Ответить</button>
+              <button type="button" class="btn-quiet" id="test-skip">Не помню</button>
+            </div>
+          </form>
+          <div class="result" id="test-result" hidden tabindex="-1">
+            <p class="grade" id="test-grade"></p>
+            <p class="comment" id="test-comment"></p>
+            <a class="btn" href="#install">Установить Память+</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block install" id="install">
+      <h2>Как поставить</h2>
+      <p class="lead">Бесплатно, без регистрации и рекламы. Работает без интернета, прогресс хранится только в телефоне.</p>
+      <div class="ways">
+        <div class="way-card">
+          <h3>Android</h3>
+          <ol>
+            <li>Скачай файл на телефон.</li>
+            <li>Открой его. Телефон спросит разрешение: приложения нет в Google Play, так и должно быть.</li>
+            <li>Нажми «Установить».</li>
+            <li>Разреши уведомления: приложение будет напоминать о зарядке.</li>
+          </ol>
+          <a class="btn" href="https://raw.githubusercontent.com/malihs2020-web/pamyat-plus/main/update/pamyat-plus.apk">Скачать APK · 14 МБ</a>
+          <p class="small">Новые версии приходят внутри приложения.</p>
+        </div>
+        <div class="way-card">
+          <h3>iPhone</h3>
+          <ol>
+            <li>Открой приложение в Safari.</li>
+            <li>Нажми «Поделиться», затем «На экран “Домой”».</li>
+            <li>Запускай с иконки на экране.</li>
+          </ol>
+          <a class="btn" href="https://malihs2020-web.github.io/pamyat-plus/">Открыть в Safari</a>
+          <p class="small">Напоминать iPhone-версия не умеет: поставь ежедневный будильник. Если страница не открывается, попробуй через мобильный интернет.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="end">
+    <p>Память+</p>
+    <p>Шрифты: Bad Script, Old Standard TT, Golos Text (OFL). Распознавание речи: Vosk (Apache 2.0).</p>
+  </footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

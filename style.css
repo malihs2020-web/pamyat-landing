@@ -1,0 +1,197 @@
+@font-face { font-family: "Bad Script"; src: url(fonts/bad-script-cyrillic-400-normal.woff2) format("woff2"); font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Bad Script"; src: url(fonts/bad-script-latin-400-normal.woff2) format("woff2"); font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Old Standard TT"; font-weight: 700; src: url(fonts/old-standard-tt-cyrillic-700-normal.woff2) format("woff2"); font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Old Standard TT"; font-weight: 700; src: url(fonts/old-standard-tt-latin-700-normal.woff2) format("woff2"); font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Old Standard TT"; font-weight: 400; src: url(fonts/old-standard-tt-cyrillic-400-normal.woff2) format("woff2"); font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Golos Text"; font-weight: 400; src: url(fonts/golos-text-cyrillic-400-normal.woff2) format("woff2"); font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Golos Text"; font-weight: 400; src: url(fonts/golos-text-latin-400-normal.woff2) format("woff2"); font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Golos Text"; font-weight: 600; src: url(fonts/golos-text-cyrillic-600-normal.woff2) format("woff2"); font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Golos Text"; font-weight: 600; src: url(fonts/golos-text-latin-600-normal.woff2) format("woff2"); font-display: swap; unicode-range: U+0000-00FF, U+2000-206F; }
+
+:root {
+  /* Тетрадь: бумага с синей клеткой, фиолетовые чернила, красная ручка учителя. */
+  --paper: #f7f9fd;
+  --grid: #dde7f4;
+  --ink: #1e1b3a;
+  --ink-soft: #55567a;
+  --violet: #4b3fd1;
+  --violet-soft: #e9e6ff;
+  --red: #cf2438;
+  --margin-line: #ee9aa4;
+
+  --cell: 28px;
+  --margin: calc(var(--cell) * 4);
+  --hand: "Bad Script", "Segoe Script", cursive;
+  --book: "Old Standard TT", Georgia, serif;
+  --text: "Golos Text", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 19px/28px var(--text); }
+img, svg { display: block; max-width: 100%; }
+a { color: var(--violet); }
+:focus-visible { outline: 3px solid var(--violet); outline-offset: 2px; border-radius: 4px; }
+
+/* Весь сайт — один лист: клетка и поля идут через всю страницу. */
+.sheet {
+  position: relative;
+  min-height: 100vh;
+  padding: 0 var(--cell) 0 calc(var(--margin) + var(--cell));
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+  overflow-x: clip;
+}
+.sheet::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 var(--margin);
+  width: 2px;
+  background: var(--margin-line);
+}
+.sheet > * { max-width: calc(var(--cell) * 40); }
+
+.top { display: flex; align-items: center; justify-content: space-between; height: calc(var(--cell) * 3); }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 600; font-size: 20px; text-decoration: none; }
+.brand img { border-radius: 9px; }
+.top-link { color: var(--violet); font-weight: 600; text-underline-offset: 4px; }
+
+h1, h2, h3, p, ol, dl, dd, figure { margin: 0; }
+h2 { font: 700 44px/56px var(--book); letter-spacing: -0.005em; max-width: calc(var(--cell) * 30); }
+h3 { font: 600 24px/28px var(--text); }
+.lead { max-width: calc(var(--cell) * 26); margin-top: var(--cell); font-size: 21px; }
+.small { color: var(--ink-soft); font-size: 16px; line-height: 28px; }
+.hand { font-family: var(--hand); font-weight: 400; color: var(--violet); }
+.block { padding-top: calc(var(--cell) * 5); }
+
+/* Первый экран */
+.hero { display: grid; grid-template-columns: minmax(0, 15fr) minmax(0, 22fr); gap: calc(var(--cell) * 2); align-items: start; padding-top: var(--cell); }
+.what { font-weight: 600; color: var(--ink); }
+h1 { margin-top: var(--cell); font: 400 58px/84px var(--hand); color: var(--violet); }
+.how { margin-top: var(--cell); max-width: calc(var(--cell) * 16); }
+.route { list-style: none; counter-reset: stop; margin-top: var(--cell); padding: 0; }
+.route li { counter-increment: stop; position: relative; padding-left: var(--cell); transition: background-color .15s; }
+.route li::before { content: counter(stop); position: absolute; left: 0; color: var(--red); font-weight: 600; }
+.route li span { color: var(--ink-soft); }
+.route b { font: 400 25px/28px var(--hand); color: var(--violet); }
+.route li.on { background: var(--violet-soft); }
+.skip { display: inline-block; margin-top: var(--cell); font-size: 16px; color: var(--ink-soft); text-underline-offset: 4px; }
+
+.plan { position: relative; }
+.plan figcaption { position: absolute; left: calc(50% + 12px); bottom: 0; font: 400 21px/28px var(--hand); color: var(--red); white-space: nowrap; }
+.plan svg text { font-family: var(--text); }
+.plan svg .word { font: 400 33px var(--hand); fill: var(--violet); }
+.plan svg .name { font-size: 15px; font-weight: 600; fill: var(--ink-soft); }
+.plan svg .num { font-size: 15px; font-weight: 600; fill: var(--red); text-anchor: middle; }
+.plan svg circle { fill: var(--paper); stroke: var(--red); stroke-width: 1.6; }
+.walls path { fill: none; stroke: var(--violet); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.glass { fill: none; stroke: var(--violet); stroke-width: 2.2; stroke-dasharray: 9 8; }
+.door { fill: none; stroke: var(--violet); stroke-width: 1.5; }
+.way { fill: none; stroke: var(--red); stroke-width: 2.6; stroke-dasharray: 1 9; stroke-linecap: round; }
+.rooms rect { fill: transparent; transition: fill .15s; }
+.rooms rect.on { fill: var(--violet-soft); }
+
+/* Чернила ложатся один раз, при открытии: сначала стены, потом маршрут и вещи по порядку. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero .walls path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: pen .55s ease-out forwards; }
+  .hero .walls path:nth-child(2) { animation-delay: .35s; }
+  .hero .walls path:nth-child(3) { animation-delay: .6s; }
+  .hero .walls path:nth-child(n+4) { animation-delay: .8s; animation-duration: .3s; }
+  .hero .glass, .hero .door, .hero .way { opacity: 0; animation: appear .4s 1.15s forwards; }
+  .hero .stop { opacity: 0; animation: appear .35s forwards; }
+  .hero .stop:nth-child(1) { animation-delay: 1.4s; }
+  .hero .stop:nth-child(2) { animation-delay: 1.65s; }
+  .hero .stop:nth-child(3) { animation-delay: 1.9s; }
+  .hero .stop:nth-child(4) { animation-delay: 2.15s; }
+  .hero .stop:nth-child(5) { animation-delay: 2.4s; }
+  .hero .stop:nth-child(6) { animation-delay: 2.65s; }
+}
+@keyframes pen { to { stroke-dashoffset: 0; } }
+@keyframes appear { to { opacity: 1; } }
+
+/* Вклейки: настоящие экраны приложения */
+.pasted { display: grid; grid-template-columns: repeat(3, minmax(0, calc(var(--cell) * 11))); gap: calc(var(--cell) * 2); margin-top: calc(var(--cell) * 2); }
+.pasted img, .aloud-shot img { width: 100%; height: auto; aspect-ratio: 390 / 844; object-fit: cover; object-position: top; border: 2px solid var(--ink); border-radius: 22px; background: #fff; }
+.pasted figcaption { margin-top: var(--cell); font-size: 17px; }
+
+/* Проверка вслух: красная ручка */
+.aloud { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, calc(var(--cell) * 11)); gap: calc(var(--cell) * 3); align-items: start; }
+.aloud-text > p { margin-top: var(--cell); max-width: calc(var(--cell) * 25); }
+.verse { margin: calc(var(--cell) * 2) 0; font: 400 25px/56px var(--book); }
+.verse mark { background: none; color: var(--red); text-decoration: underline wavy var(--red) 1.5px; text-underline-offset: 6px; }
+.verse .red { margin-left: 14px; font: 400 21px/28px var(--hand); color: var(--red); }
+
+/* Метод */
+.method { margin-top: calc(var(--cell) * 2); display: grid; gap: var(--cell); max-width: calc(var(--cell) * 34); }
+.method > div { display: grid; grid-template-columns: minmax(0, 1fr) calc(var(--cell) * 9); column-gap: var(--cell); }
+.method dt { grid-column: 1; font-weight: 600; }
+.method dd { grid-column: 1; }
+.method .src { grid-column: 2; grid-row: 1 / span 2; font: 400 21px/28px var(--hand); color: var(--red); }
+#method > .small { margin-top: calc(var(--cell) * 2); max-width: calc(var(--cell) * 25); }
+
+/* Контрольная */
+.date { font: 400 25px/28px var(--hand); color: var(--violet); }
+.test .hand { margin-top: var(--cell); font-size: 58px; line-height: 84px; }
+.test-grid { display: grid; grid-template-columns: minmax(0, 22fr) minmax(0, 15fr); gap: calc(var(--cell) * 2); align-items: start; margin-top: calc(var(--cell) * 2); }
+.test-plan { position: relative; }
+.test-plan .plan { padding: 0; }
+.test-plan .answer { font: 400 33px var(--hand); fill: var(--violet); }
+.test-plan .fix { font: 400 33px var(--hand); fill: var(--red); }
+.test-plan .tick { font: 400 34px var(--hand); fill: var(--red); }
+.result:focus { outline: none; }
+label { display: block; font-weight: 600; font-size: 21px; }
+input { display: block; width: 100%; height: calc(var(--cell) * 2); margin-top: var(--cell); padding: 0 12px; border: 2px solid var(--violet); border-radius: 10px; background: #fff; color: var(--violet); font: 400 28px/1 var(--hand); }
+.test-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: var(--cell); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 28px; border: 0; border-radius: 14px; background: var(--violet); color: #fff; font: 600 19px/1 var(--text); text-decoration: none; cursor: pointer; }
+.btn:hover { background: #3c31b3; }
+.btn-quiet { min-height: 56px; padding: 0 20px; border: 2px solid var(--violet); border-radius: 14px; background: transparent; color: var(--violet); font: 600 19px/1 var(--text); cursor: pointer; }
+.grade { font: 400 112px/112px var(--hand); color: var(--red); }
+.comment { margin: var(--cell) 0; }
+
+/* Установка */
+.ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(var(--cell) * 2); margin-top: calc(var(--cell) * 2); }
+.way-card ol { margin-top: var(--cell); padding-left: 24px; }
+.way-card li + li { margin-top: 0; }
+.way-card li::marker { color: var(--red); font-weight: 600; }
+.way-card .btn { margin-top: var(--cell); }
+.way-card .small { margin-top: var(--cell); }
+
+.end { margin-top: calc(var(--cell) * 5); padding-bottom: calc(var(--cell) * 2); color: var(--ink-soft); font-size: 15px; }
+
+@media (max-width: 1080px) {
+  /* На узком экране план идёт сразу за объяснением, до списка: он и есть главное. */
+  .hero, .test-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero { gap: 0; }
+  .hero-text { display: contents; }
+  .hero .plan { order: 1; max-width: calc(var(--cell) * 26); margin-top: var(--cell); }
+  .route { order: 2; }
+  .skip { order: 3; justify-self: start; }
+  .test-plan { max-width: calc(var(--cell) * 26); }
+  h1 { font-size: 52px; line-height: 84px; }
+  .how { max-width: calc(var(--cell) * 24); }
+}
+
+@media (max-width: 760px) {
+  :root { --margin: var(--cell); }
+  body { font-size: 18px; }
+  .sheet { padding: 0 16px 0 calc(var(--margin) + 14px); }
+  h1, .test .hand { font-size: 40px; line-height: 56px; }
+  h2 { font-size: 33px; line-height: 42px; }
+  .lead { font-size: 19px; }
+  .block { padding-top: calc(var(--cell) * 3); }
+  .pasted, .aloud, .ways { grid-template-columns: minmax(0, 1fr); }
+  .pasted figure, .aloud-shot { max-width: calc(var(--cell) * 11); }
+  .pasted { gap: calc(var(--cell) * 2); }
+  .verse { font-size: 22px; line-height: 42px; }
+  .verse .red { display: block; margin-left: 0; width: 100%; font-size: 19px; }
+  .method > div { grid-template-columns: minmax(0, 1fr); }
+  .method .src { grid-column: 1; grid-row: auto; }
+  .plan svg .name { display: none; }
+  .plan svg .word, .test-plan .answer, .test-plan .fix { font-size: 42px; }
+  .plan figcaption { font-size: 18px; }
+  .btn { width: 100%; }
+}
